@@ -16,7 +16,7 @@ const Sidebar = () => {
           <div>
             <div className='w-full hidden md:flex px-4 py-2  rounded-lg justify-center items-center mx-auto'>
               <h1 className='my-3 text-3xl font-medium text-[#4285F3]'>
-                Filter Product
+                Filter Products
               </h1>
             </div>
           </div>

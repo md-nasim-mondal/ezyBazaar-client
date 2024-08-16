@@ -49,7 +49,8 @@ const Navbar = () => {
               <h1 className='my-5 text-[40px] font-medium text-[#4285F3] text-center'>
                 LOGO
               </h1>
-              <div className=' absolute right-[35%] -bottom-[80%] md:hidden'>
+              <div className=' absolute right-[35%] -bottom-[100%] md:hidden dark:bg-gray-600
+               p-4 rounded-lg'>
                 {showSearchField && (
                   <>
                     {/* Search Products */}
@@ -161,7 +162,7 @@ const Navbar = () => {
                 </div>
               </form>
             </div>
-            <div className=' absolute right-[35%] -bottom-[80%] lg:hidden'>
+            <div className=' absolute right-[35%] -bottom-[90%] lg:hidden dark:bg-gray-600 p-4 rounded-lg'>
               {showSearchField && (
                 <>
                   {/* Search Products */}
@@ -209,7 +210,7 @@ const Navbar = () => {
                     </div>
                     <div
                       onClick={() => setShowSearchField(!showSearchField)}
-                      className='font-medium border-2 p-2 border-gray-200 rounded-full'>
+                      className='font-medium border-2 p-2 border-gray-200 rounded-full lg:hidden'>
                       <FaSearch className='text-2xl' />
                     </div>
                     <div>

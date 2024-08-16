@@ -62,10 +62,10 @@ const Products = () => {
   };
 
   return (
-    <section>
+    <section className=" dark:bg-gray-600 py-24 w-full rounded-2xl">
       <div className='flex justify-center items-center font-semibold'>
         <select
-          className='border px-2 py-1 text-sm focus:text-ezyBazaar-primary outline-ezyBazaar-primary border-ezyBazaar-primary text-ezyBazaar-primary bg-transparent focus:border-2 mx-auto mb-12'
+          className='border px-2 py-1 text-sm focus:text-ezyBazaar-primary outline-ezyBazaar-primary border-ezyBazaar-primary text-ezyBazaar-primary bg-transparent focus:border-2 mx-auto mb-12 dark:bg-gray-600'
           value={itemsPerPage}
           onChange={handleItemsPerPage}
           name='products'
