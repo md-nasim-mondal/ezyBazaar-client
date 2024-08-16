@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const ProductCard = ({ product }) => {
   return (
-    <div>
+    <div className="mx-auto">
       <h2>{product?.title}</h2>
       <img src={product?.image} alt={product?.title} />
       <p>{product?.description}</p>
@@ -13,7 +13,8 @@ const ProductCard = ({ product }) => {
       <p>Ratings: {product?.ratings}</p>
       <p>
         Created At:{" "}
-        {moment(product?.createdAt).format("MMMM DD, YYYY [at] hh:mm A")}
+        {/* {moment(product?.createdAt).format("MMMM DD, YYYY [at] hh:mm A")} */}
+        {moment(product?.createdAt).format("MMMM DD, YYYY")}
       </p>
     </div>
   );

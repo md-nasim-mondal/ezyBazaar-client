@@ -2,7 +2,7 @@ import Products from "../components/Products";
 
 const Home = () => {
   return (
-    <div>
+    <div className='min-h-[70vh]'>
       <Products />
     </div>
   );
