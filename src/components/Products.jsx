@@ -1,23 +1,23 @@
-import React from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchProducts = async ({ queryKey }) => {
   const [_key, { page, search, category, brand, priceSort, dateSort }] =
     queryKey;
-  const { data } = await axios.get("http://localhost:5000/api/products", {
+  const { data } = await axios.get("http://localhost:5000/products", {
     params: { page, search, category, brand, priceSort, dateSort },
   });
   return data;
 };
 
 const Products = () => {
-  const [page, setPage] = React.useState(1);
-  const [search, setSearch] = React.useState("");
-  const [category, setCategory] = React.useState("");
-  const [brand, setBrand] = React.useState("");
-  const [priceSort, setPriceSort] = React.useState("");
-  const [dateSort, setDateSort] = React.useState("");
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
+  const [priceSort, setPriceSort] = useState("");
+  const [dateSort, setDateSort] = useState("");
 
   const { data, error, isLoading } = useQuery({
     queryKey: [
@@ -41,9 +41,9 @@ const Products = () => {
         placeholder='Search products'
       />
       {/* Add sorting, category, brand, and pagination UI controls here */}
-      <ul>
+      <div className='flex flex-wrap gap-8'>
         {data?.map((product) => (
-          <li key={product?._id}>
+          <div key={product?._id}>
             <h2>{product?.name}</h2>
             <img src={product?.image} alt={product?.name} width='150' />
             <p>{product?.description}</p>
@@ -52,9 +52,9 @@ const Products = () => {
             <p>Brand: {product?.brandName}</p>
             <p>Rating: {product?.ratings}</p>
             <p>Added on: {new Date(product?.createdAt).toLocaleDateString()}</p>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       {/* Pagination controls */}
       <button onClick={() => setPage(page - 1)} disabled={page === 1}>
         Previous
