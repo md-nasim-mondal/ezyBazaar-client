@@ -66,7 +66,8 @@ const Login = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return <p className='text-center my-24 dark:text-white'>Loading...</p>;
 
   return (
     <div className='flex justify-center items-center min-h-screen xl:gap-24 gap-16 lg:gap-20 bg-white p-8'>

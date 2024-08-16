@@ -70,7 +70,8 @@ const SignUp = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return <p className='text-center my-24 dark:text-white'>Loading...</p>;
 
   return (
     <div className='flex flex-col lg:flex-row justify-center items-center min-h-screen mx-auto xl:gap-24 bg-white p-8'>
