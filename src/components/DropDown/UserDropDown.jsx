@@ -1,11 +1,12 @@
 import useAuth from "../../hooks/useAuth";
 import avatarImg from "../../assets/images/placeholder.jpg";
+import { CiLogin } from "react-icons/ci";
 
 const UserMenuDropdown = () => {
-  const { userDropDownOpen, setUserDropDownOpen, user } = useAuth();
+  const { userDropDownOpen, setUserDropDownOpen, user, logOut } = useAuth();
 
   return (
-    <div className='relative inline-block focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring'>
+    <div className='relative inline-block focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring min-w-40'>
       {/* UserMenuDropdown toggle button */}
       <button
         onClick={() => setUserDropDownOpen(!userDropDownOpen)}
@@ -67,11 +68,14 @@ const UserMenuDropdown = () => {
             <span className='mx-1'>Help</span>
           </a>
           <hr className='border-gray-200 dark:border-gray-700' />
-          <a
-            href='#'
-            className='flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white'>
-            <span className='mx-1'>Sign Out</span>
-          </a>
+          <div
+            onClick={logOut}
+            className='flex items-center p-3 text-sm  capitalize transition-colors duration-300 transform hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white'>
+            <span className='mx-1'>Sign Out</span>{" "}
+            <span className='bg-[#FFECEA] p-2 rounded-full w-8 h-8 flex items-center dark:hover:bg-black'>
+              <CiLogin className='text-xl' />
+            </span>
+          </div>
         </div>
       )}
     </div>

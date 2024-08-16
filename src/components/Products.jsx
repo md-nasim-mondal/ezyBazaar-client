@@ -41,7 +41,7 @@ const Products = () => {
         placeholder='Search products'
       />
       {/* Add sorting, category, brand, and pagination UI controls here */}
-      <div className='flex flex-wrap gap-8'>
+      <div className='flex flex-wrap gap-8 justify-center'>
         {data?.map((product) => (
           <div key={product?._id}>
             <h2>{product?.name}</h2>
