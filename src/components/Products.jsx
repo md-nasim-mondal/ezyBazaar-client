@@ -244,51 +244,52 @@ const Products = () => {
         )}
       </div>
       {totalPages > 0 && (
-        <div className='flex flex-col gap-4 justify-center items-center font-semibold mt-8 lg:mt-16'>
-          <p className='text-ezyBazaar-primary'>
-            Page: {currentPage} of {totalPages}
-          </p>
-          <div className='flex gap-3'>
-            <button
-              className='px-3 border disabled:text-gray-500 disabled:border-gray-500 disabled:hover:text-gray-500 disabled:hover:bg-transparent text-ezyBazaar-primary border-ezyBazaar-primary hover:bg-ezyBazaar-primary hover:text-white'
-              disabled={currentPage === 1}
-              onClick={handlePreviousPage}>
-              Previous
-            </button>
+  <div className='flex flex-col gap-4 justify-center items-center font-semibold mt-8 lg:mt-16'>
+    <p className='text-ezyBazaar-primary'>
+      Page: {currentPage} of {totalPages}
+    </p>
+    <div className='flex flex-wrap gap-2 justify-center'>
+      <button
+        className='px-3 py-1 text-sm border disabled:text-gray-500 disabled:border-gray-500 disabled:hover:text-gray-500 disabled:hover:bg-transparent text-ezyBazaar-primary border-ezyBazaar-primary hover:bg-ezyBazaar-primary hover:text-white'
+        disabled={currentPage === 1}
+        onClick={handlePreviousPage}>
+        Previous
+      </button>
 
-            {pages.map((page) => (
-              <button
-                className={`px-3 border ${
-                  currentPage === page + 1
-                    ? "bg-ezyBazaar-primary border-ezyBazaar-primary text-white hover:bg-transparent hover:text-ezyBazaar-primary"
-                    : "text-ezyBazaar-primary border-ezyBazaar-primary hover:bg-ezyBazaar-primary hover:text-white"
-                }`}
-                onClick={() => setCurrentPage(page + 1)}
-                key={page}>
-                {page + 1}
-              </button>
-            ))}
+      {pages.map((page) => (
+        <button
+          className={`px-3 py-1 text-sm border ${
+            currentPage === page + 1
+              ? "bg-ezyBazaar-primary border-ezyBazaar-primary text-white hover:bg-transparent hover:text-ezyBazaar-primary"
+              : "text-ezyBazaar-primary border-ezyBazaar-primary hover:bg-ezyBazaar-primary hover:text-white"
+          }`}
+          onClick={() => setCurrentPage(page + 1)}
+          key={page}>
+          {page + 1}
+        </button>
+      ))}
 
-            <button
-              className='px-3 border disabled:text-gray-500 disabled:border-gray-500 disabled:hover:text-gray-500 disabled:hover:bg-transparent text-ezyBazaar-primary border-ezyBazaar-primary hover:bg-ezyBazaar-primary hover:text-white'
-              disabled={currentPage === totalPages || totalPages === 0}
-              onClick={handleNextPage}>
-              Next
-            </button>
-          </div>
-          <select
-            className='border px-2 py-1 focus:text-ezyBazaar-primary outline-ezyBazaar-primary border-ezyBazaar-primary text-ezyBazaar-primary bg-transparent focus:border-2 mx-auto mb-12'
-            value={itemsPerPage}
-            onChange={handleItemsPerPage}
-            name='products'
-            id='products'>
-            <option value='3'>Show Products Per Page: 3</option>
-            <option value='6'>Show Products Per Page: 6</option>
-            <option value='9'>Show Products Per Page: 9</option>
-            <option value='12'>Show Products Per Page: 12</option>
-          </select>
-        </div>
-      )}
+      <button
+        className='px-3 py-1 text-sm border disabled:text-gray-500 disabled:border-gray-500 disabled:hover:text-gray-500 disabled:hover:bg-transparent text-ezyBazaar-primary border-ezyBazaar-primary hover:bg-ezyBazaar-primary hover:text-white'
+        disabled={currentPage === totalPages || totalPages === 0}
+        onClick={handleNextPage}>
+        Next
+      </button>
+    </div>
+    <select
+      className='border px-2 py-1 text-sm focus:text-ezyBazaar-primary outline-ezyBazaar-primary border-ezyBazaar-primary text-ezyBazaar-primary bg-transparent focus:border-2 mx-auto mb-12'
+      value={itemsPerPage}
+      onChange={handleItemsPerPage}
+      name='products'
+      id='products'>
+      <option value='3'>Show Products Per Page: 3</option>
+      <option value='6'>Show Products Per Page: 6</option>
+      <option value='9'>Show Products Per Page: 9</option>
+      <option value='12'>Show Products Per Page: 12</option>
+    </select>
+  </div>
+)}
+
     </section>
   );
 };

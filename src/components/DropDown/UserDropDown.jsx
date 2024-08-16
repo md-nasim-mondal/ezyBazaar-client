@@ -6,7 +6,7 @@ const UserMenuDropdown = () => {
   const { userDropDownOpen, setUserDropDownOpen, user, logOut } = useAuth();
 
   return (
-    <div className='relative inline-block focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring min-w-40'>
+    <div className='relative inline-block focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring'>
       {/* UserMenuDropdown toggle button */}
       <button
         onClick={() => setUserDropDownOpen(!userDropDownOpen)}
@@ -45,7 +45,7 @@ const UserMenuDropdown = () => {
       {userDropDownOpen && (
         <div
           onClick={() => setUserDropDownOpen(false)}
-          className='absolute right-0 z-20 w-full py-2 overflow-hidden origin-top-right bg-white rounded-b-md shadow-xl dark:bg-gray-600'>
+          className='absolute right-0 z-20 w-full  min-w-40 py-2 overflow-hidden origin-top-right bg-white rounded-b-md shadow-xl dark:bg-gray-600'>
           <a
             href='#'
             className='flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white'>
