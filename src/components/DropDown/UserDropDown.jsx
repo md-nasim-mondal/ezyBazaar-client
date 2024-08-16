@@ -53,6 +53,13 @@ const UserMenuDropdown = () => {
           </a>
 
           <hr className='border-gray-200 dark:border-gray-700' />
+          <a
+            href='#'
+            className='flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white'>
+            <span className='mx-1'>My Cart</span>
+          </a>
+
+          <hr className='border-gray-200 dark:border-gray-700' />
 
           <a
             href='#'

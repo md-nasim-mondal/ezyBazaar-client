@@ -103,9 +103,6 @@ const Navbar = () => {
                       </div>
                       <div>
                         <div className='flex items-center gap-1 font-semibold'>
-                          <span className='text-[#152A16]'>
-                            <ThemeToggle />
-                          </span>
                           <Drawer />
                         </div>
                       </div>

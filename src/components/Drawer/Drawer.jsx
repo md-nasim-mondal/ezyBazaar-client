@@ -1,10 +1,13 @@
 import { AiOutlineAppstore, AiOutlineBars } from "react-icons/ai";
 import MenuItem from "../MenuItem";
-import { GoPeople } from "react-icons/go";
-import { CiHeart, CiLogin, CiSearch } from "react-icons/ci";
-import { IoDocumentTextOutline, IoSettingsOutline } from "react-icons/io5";
+import { CiHeart, CiLogin } from "react-icons/ci";
+import {  IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineHelpCenter } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import FilterInput from "../FilterInput";
+import { BiCartAdd } from "react-icons/bi";
+import { CgProfile } from "react-icons/cg";
 
 const Drawer = () => {
   const { isOpen, setIsOpen, user, logOut } = useAuth();
@@ -64,23 +67,29 @@ const Drawer = () => {
           </div>
           {/* Nav Items */}
           <div>
+            <div className='text-end mt-6 mr-6'>
+              <ThemeToggle />
+            </div>
+            <div className='p-4'>
+              <FilterInput />
+            </div>
+            <hr className='text-2xl font-bold text-gray-300 ' />
             {/*  Menu Items */}
-            <div className='space-y-5 p-4 pl-0 space-x-2'>
+            <div className='space-y-5 p-4 pl-0'>
               <MenuItem
                 label={"Home"}
-                address={"/home"}
+                address={"/"}
                 icon={AiOutlineAppstore}
               />
               <MenuItem
-                label={"New Listing"}
-                address={"/new-listing"}
-                icon={GoPeople}
+                label={"View Profile"}
+                address={"/profile"}
+                icon={CgProfile}
               />
-              <MenuItem label={"Search"} address={"/search"} icon={CiSearch} />
               <MenuItem
-                label={"About"}
-                address={"/about"}
-                icon={IoDocumentTextOutline}
+                label={"My Cart"}
+                address={"/my-cart"}
+                icon={BiCartAdd}
               />
               <MenuItem
                 label={"Favorites"}
@@ -104,7 +113,7 @@ const Drawer = () => {
               <div
                 onClick={logOut}
                 className='text-red-600 flex gap-4 pl-3 pb-4 text-lg'>
-                <CiLogin className='text-2xl' /> Logout
+                <CiLogin className='text-2xl' /> Sign Out
               </div>
             </div>
           </div>
