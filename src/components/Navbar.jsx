@@ -17,8 +17,8 @@ const Navbar = () => {
     smallDevice,
     setShowSearchField,
     showSearchField,
+    user,
   } = useAuth();
-  const user = true;
 
   const inputRef = useRef(null);
   const handleSearchProduct = (e) => {
@@ -43,13 +43,11 @@ const Navbar = () => {
         <div className='py-4 border-b-[1px]'>
           <Container>
             <div className='flex flex-row  items-center justify-between gap-3 md:gap-0 relative'>
-              {/* User Menu Drop Down */}
-              {/* <div>{user && <UserMenuDropdown />}</div> */}
-
               <h1 className='my-5 text-[40px] font-medium text-[#4285F3] text-center'>
                 LOGO
               </h1>
-              <div className=' absolute right-[35%] -bottom-[100%] md:hidden dark:bg-gray-600
+              <div
+                className=' absolute right-[35%] -bottom-[100%] md:hidden dark:bg-gray-600
                p-4 rounded-lg'>
                 {showSearchField && (
                   <>

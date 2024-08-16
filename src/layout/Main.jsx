@@ -10,7 +10,10 @@ const Main = () => {
   const [showComponents, setShowComponents] = useState(false);
   const { setShowSidebar, setUserDropDownOpen, user } = useAuth();
   useEffect(() => {
-    if (location?.pathname.toLowerCase() === "/signup") {
+    if (
+      location?.pathname.toLowerCase() === "/signup" ||
+      location?.pathname.toLowerCase() === "/"
+    ) {
       setShowComponents(false);
       setShowSidebar(false);
     } else {

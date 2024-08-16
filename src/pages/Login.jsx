@@ -3,54 +3,50 @@ import toast from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { imageUpload } from "../api/utils";
 import useAuth from "../hooks/useAuth";
 import SocialLogin from "../components/SocialLogin";
 
-const SignUp = () => {
+const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location?.state || "/home";
   const [isLoading, setIsLoading] = useState(false);
-  const { createUser, updateUserProfile, setUser, loading, signInWithGoogle } =
-    useAuth();
+  const from = location?.state || "/home";
+  const { signIn, signInWithGoogle, resetPassword, loading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [email, setEmail] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const image = form.image.files[0];
-    const accepted = e.target.terms.checked;
-
-    if (password.length < 6) {
-      return toast.error("Password length should be minimum 6 digit");
-    }
-    if (!accepted) {
-      return toast.error("Please accept our terms of service!");
-    }
 
     try {
       setIsLoading(true);
-      // 1. Upload image and get image url
-      const image_url = await imageUpload(image);
-
-      // 2. User Registration
-      const result = await createUser(email, password);
-
-      // 3. Save username and photo in firebase
-      await updateUserProfile(name, image_url);
-
-      // Optimistic UI update
-      setUser({ ...result?.user, photoURL: image_url, displayName: name });
-
+      // 1. sign In user
+      await signIn(email, password);
       navigate(from);
-      toast.success("SignUp Successful");
+      toast.success("SignIn Successful");
       setIsLoading(false);
     } catch (err) {
       console.log(err);
+      toast.error(err.message);
+      setIsLoading(false);
+    }
+  };
+
+  const handleResetPassword = async () => {
+    if (!email) return toast.error("Please write your email first!");
+    setIsLoading(true);
+    try {
+      await resetPassword(email);
+      toast.success(
+        "Request Success! Check your email for further process.........."
+      );
+      setIsLoading(false);
+    } catch (err) {
+      // console.log(err)
       toast.error(err.message);
       setIsLoading(false);
     }
@@ -73,38 +69,33 @@ const SignUp = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className='flex flex-col lg:flex-row justify-center items-center min-h-screen mx-auto xl:gap-24 bg-white p-8'>
-      <div className='flex flex-col max-w-lg p-6 border-2 rounded-xl '>
-        <div className='mb-4 text-start'>
+    <div className='flex justify-center items-center min-h-screen xl:gap-24 gap-16 lg:gap-20 bg-white p-8'>
+      <div className='flex flex-col max-w-lg p-6 rounded-lg border-2'>
+        <div className='mb-8 text-start'>
           <h1 className='my-3 text-4xl font-medium text-[#4285F3]'>LOGO</h1>
-          <h1 className='my-3 text-3xl font-bold'>Sign Up To Your Account</h1>
-          <p className='text-lg'>
-            Welcome Back! By click the sign up button, you&apos;re agree to
-            Zenitood Terms and Service and acknowledge the{" "}
-            <span className='text-[#4285F3] underline'>
-              <a href='#'>Privacy and Policy</a>
-            </span>
+          <h1 className='my-3 text-3xl font-bold'>Log In To Your Account</h1>
+          <p className='text-[#5C635A]'>
+            Welcome Back! Select a method to log in:
           </p>
         </div>
+
+        <SocialLogin
+          handleGoogleSignIn={handleGoogleSignIn}
+          isLoading={isLoading}
+        />
+
+        <div className='flex items-center py-4'>
+          <div className='flex-1 dark:bg-gray-700'>
+            <hr />
+          </div>
+          <p className='px-0.5 text-[#5C635A]'>Or Continue With Email</p>
+          <div className='flex-1'>
+            <hr />
+          </div>
+        </div>
+
         <form onSubmit={handleSubmit} className='space-y-6'>
           <div className='space-y-4'>
-            <div>
-              <label
-                htmlFor='name'
-                className='block mb-2  text-[#152A16] font-semibold'>
-                Name
-              </label>
-              <input
-                type='text'
-                name='name'
-                id='name'
-                placeholder='@username'
-                required
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500'
-                data-temp-mail-org='0'
-              />
-            </div>
-
             <div>
               <label
                 htmlFor='email'
@@ -121,23 +112,6 @@ const SignUp = () => {
                 data-temp-mail-org='0'
               />
             </div>
-
-            <div>
-              <label
-                htmlFor='image'
-                className='block mb-2 text-[#152A16] font-semibold'>
-                Select Image:
-              </label>
-              <input
-                required
-                type='file'
-                id='image'
-                name='image'
-                accept='image/*'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500'
-              />
-            </div>
-
             <div className='relative'>
               <div className='flex justify-between'>
                 <label
@@ -167,21 +141,23 @@ const SignUp = () => {
             </div>
           </div>
 
-          <div className='flex items-start mb-5'>
-            <div className='flex items-center h-5'>
+          <div className='flex items-start mb-5 justify-between'>
+            <div className='flex items-center'>
               <input
                 id='terms'
                 type='checkbox'
                 name='terms'
-                className='w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300'
-                required
+                className='w-3 h-3 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300'
               />
-              <label htmlFor='terms' className='ms-2 text-[#4285F3]'>
-                <a href='#' className='hover:underline'>
-                  Accept Terms of Services
-                </a>
+              <label htmlFor='terms' className='ms-1 text-sm'>
+                Remember Me
               </label>
             </div>
+            <p
+              onClick={handleResetPassword}
+              className='text-sm hover:underline hover:text-rose-500 text-[#4285F3] underline'>
+              Forgot password?
+            </p>
           </div>
 
           <div className='text-center'>
@@ -192,34 +168,22 @@ const SignUp = () => {
               {isLoading ? (
                 <TbFidgetSpinner className='animate-spin m-auto' />
               ) : (
-                "Sign Up"
+                "Log In"
               )}
             </button>
           </div>
         </form>
-        <p className='px-6 py-3  text-center text-[#152A16] font-medium'>
-          Already Have an Account?{" "}
-          <Link to='/' className='underline hover:text-rose-500 text-[#4285F3]'>
-            Login
+        <p className='text-center text-[#152A16] py-2'>
+          Don&apos;t Have an Account?{" "}
+          <Link
+            to='/signup'
+            className='hover:underline hover:text-rose-500 text-[#4285F3]'>
+            Create Account
           </Link>
         </p>
-
-        <div className='flex items-center py-4'>
-          <div className='flex-1 dark:bg-gray-700'>
-            <hr />
-          </div>
-          <p className='px-0.5 text-[#5C635A]'>Or Continue With Social Login</p>
-          <div className='flex-1'>
-            <hr />
-          </div>
-        </div>
-        <SocialLogin
-          handleGoogleSignIn={handleGoogleSignIn}
-          isLoading={isLoading}
-        />
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default Login;

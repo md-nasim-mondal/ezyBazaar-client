@@ -5,6 +5,10 @@ import { CiLogin } from "react-icons/ci";
 const UserMenuDropdown = () => {
   const { userDropDownOpen, setUserDropDownOpen, user, logOut } = useAuth();
 
+  const handleLogOut = () => {
+    logOut();
+  }
+
   return (
     <div className='relative inline-block focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring'>
       {/* UserMenuDropdown toggle button */}
@@ -76,7 +80,7 @@ const UserMenuDropdown = () => {
           </a>
           <hr className='border-gray-200 dark:border-gray-700' />
           <div
-            onClick={logOut}
+            onClick={handleLogOut}
             className='flex items-center p-3 text-sm  capitalize transition-colors duration-300 transform hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white'>
             <span className='mx-1'>Sign Out</span>{" "}
             <span className='bg-[#FFECEA] p-2 rounded-full w-8 h-8 flex items-center dark:hover:bg-black'>
