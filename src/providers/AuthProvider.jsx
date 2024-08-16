@@ -25,6 +25,14 @@ const AuthProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [smallDevice, setSmallDevice] = useState(window.innerWidth < 768);
 
+  const [searchText, setSearchText] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const handleResize = () => {
@@ -78,30 +86,29 @@ const AuthProvider = ({ children }) => {
   };
   // Get token from server
   const getToken = async (email) => {
-  const { data } = await axios.post(
-    `${import.meta.env.VITE_API_URL}/jwt`,
-    { email },
-    { withCredentials: true }
-  );
-  return data;
-};
-
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/jwt`,
+      { email },
+      { withCredentials: true }
+    );
+    return data;
+  };
 
   // save user
- const saveUser = async (user) => {
-   const currentUser = {
-     name: user?.displayName,
-     email: user?.email,
-     photo: user?.photoURL,
-     role: "user",
-     status: "Verified",
-   };
-   const { data } = await axios.post(
-     `${import.meta.env.VITE_API_URL}/user`,
-     currentUser
-   );
-   return data;
- };
+  const saveUser = async (user) => {
+    const currentUser = {
+      name: user?.displayName,
+      email: user?.email,
+      photo: user?.photoURL,
+      role: "user",
+      status: "Verified",
+    };
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/user`,
+      currentUser
+    );
+    return data;
+  };
 
   // onAuthStateChange
   useEffect(() => {
@@ -139,6 +146,22 @@ const AuthProvider = ({ children }) => {
     setSmallDevice,
     isOpen,
     setIsOpen,
+    searchText,
+    setSearchText,
+    selectedBrand,
+    setSelectedBrand,
+    selectedCategory,
+    setSelectedCategory,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+    sortBy,
+    setSortBy,
+    itemsPerPage,
+    setItemsPerPage,
+    currentPage,
+    setCurrentPage,
   };
 
   return (

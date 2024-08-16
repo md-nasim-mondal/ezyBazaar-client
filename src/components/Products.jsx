@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import useGetProducts from "../hooks/useGetProducts";
 import ProductCard from "./ProductCard";
 import toast from "react-hot-toast";
@@ -6,17 +6,11 @@ import useAxiosCommon from "../hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
+import useAuth from "../hooks/useAuth";
 
 const Products = () => {
-  const [searchText, setSearchText] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-  const [sortBy, setSortBy] = useState("");
-  const [itemsPerPage, setItemsPerPage] = useState(3);
-  const [currentPage, setCurrentPage] = useState(1);
-
+	const {searchText, setSearchText, selectedBrand, setSelectedBrand, selectedCategory, setSelectedCategory, minPrice, setMinPrice, maxPrice, setMaxPrice, sortBy, setSortBy, itemsPerPage, setItemsPerPage, currentPage, setCurrentPage } = useAuth();
+ 
   const inputRef = useRef(null);
 
   const axiosCommon = useAxiosCommon();
