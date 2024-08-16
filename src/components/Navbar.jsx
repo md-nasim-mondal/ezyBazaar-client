@@ -10,7 +10,14 @@ import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 
 const Navbar = () => {
-  const { searchText, setSearchText, setCurrentPage, smallDevice } = useAuth();
+  const {
+    searchText,
+    setSearchText,
+    setCurrentPage,
+    smallDevice,
+    setShowSearchField,
+    showSearchField,
+  } = useAuth();
   const user = true;
 
   const inputRef = useRef(null);
@@ -35,29 +42,70 @@ const Navbar = () => {
       <div className='w-full bg-white dark:bg-gray-600 z-10 shadow-sm'>
         <div className='py-4 border-b-[1px]'>
           <Container>
-            <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
+            <div className='flex flex-row  items-center justify-between gap-3 md:gap-0 relative'>
               {/* User Menu Drop Down */}
               {/* <div>{user && <UserMenuDropdown />}</div> */}
 
               <h1 className='my-5 text-[40px] font-medium text-[#4285F3] text-center'>
                 LOGO
               </h1>
-
+              <div className=' absolute right-[35%] -bottom-[80%] md:hidden'>
+                {showSearchField && (
+                  <>
+                    {/* Search Products */}
+                    <form
+                      onSubmit={handleSearchProduct}
+                      className='sm:col-span-2 lg:col-span-2 xl:col-span-1 flex gap-2 items-center justify-start text-ezyBazaar-secondary'>
+                      <div className='flex gap-2 w-full items-center relative pl-2 pr-6 bg-transparent rounded-lg border border-ezyBazaar-secondary'>
+                        <label className='font-medium' htmlFor='search'>
+                          <FaSearch />
+                        </label>
+                        <input
+                          ref={inputRef}
+                          value={searchText}
+                          onChange={(e) => setSearchText(e.target.value)}
+                          className='px-2 rounded-r-lg py-2 bg-transparent w-full border-l border-ezyBazaar-secondary focus:outline-0'
+                          placeholder='Search Products'
+                          type='text'
+                          name='search'
+                          id='search'
+                        />
+                        <div className='absolute right-0 flex gap-2'>
+                          {searchText !== "" && (
+                            <button
+                              title='Clear Search Field'
+                              onClick={clearSearchText}
+                              className='text-2xl hover:text-ezyBazaar-primary transition-all duration-500 z-10'
+                              type='button'>
+                              <MdClear />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </form>
+                  </>
+                )}
+              </div>
               <div>
                 {user && (
                   <>
                     <div className='flex flex-row items-center gap-3'>
-                      <div className='border-r-2 pr-6'>
+                      <div
+                        onClick={() => setShowSearchField(!showSearchField)}
+                        className='font-medium border-2 p-3.5 border-gray-200 rounded-full'>
+                        <FaSearch className='text-2xl' />
+                      </div>
+                      <div className='border-r-2 pr-6 hidden md:block'>
                         <span>
                           <IoNotificationsOutline className='text-2xl w-12 h-12 border rounded-full p-2 dark:text-white' />
                         </span>
                       </div>
                       <div>
-                        <div className='flex items-center gap-4 font-semibold'>
-                          <Drawer />
+                        <div className='flex items-center gap-1 font-semibold'>
                           <span className='text-[#152A16]'>
                             <ThemeToggle />
                           </span>
+                          <Drawer />
                         </div>
                       </div>
                     </div>
@@ -72,7 +120,7 @@ const Navbar = () => {
   }
   return (
     <div className='w-full bg-white dark:bg-gray-600 z-10 shadow-sm'>
-      <div className='py-4 border-b-[1px]'>
+      <div className='py-4 border-b-[1px] relative'>
         <Container>
           <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
             <div>
@@ -84,7 +132,7 @@ const Navbar = () => {
               {/* Search Products */}
               <form
                 onSubmit={handleSearchProduct}
-                className='sm:col-span-2 lg:col-span-2 xl:col-span-1 flex gap-2 items-center justify-start text-ezyBazaar-secondary'>
+                className='sm:col-span-2 lg:col-span-2 xl:col-span-1 lg:flex gap-2 items-center justify-start text-ezyBazaar-secondary hidden'>
                 <div className='flex gap-2 w-full items-center relative pl-2 pr-6 bg-transparent rounded-lg border border-ezyBazaar-secondary'>
                   <label className='font-medium' htmlFor='search'>
                     <FaSearch />
@@ -113,14 +161,56 @@ const Navbar = () => {
                 </div>
               </form>
             </div>
+            <div className=' absolute right-[35%] -bottom-[80%] lg:hidden'>
+              {showSearchField && (
+                <>
+                  {/* Search Products */}
+                  <form
+                    onSubmit={handleSearchProduct}
+                    className='sm:col-span-2 lg:col-span-2 xl:col-span-1 flex gap-2 items-center justify-start text-ezyBazaar-secondary'>
+                    <div className='flex gap-2 w-full items-center relative pl-2 pr-6 bg-transparent rounded-lg border border-ezyBazaar-secondary'>
+                      <label className='font-medium' htmlFor='search'>
+                        <FaSearch />
+                      </label>
+                      <input
+                        ref={inputRef}
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                        className='px-2 rounded-r-lg py-2 bg-transparent w-full border-l border-ezyBazaar-secondary focus:outline-0'
+                        placeholder='Search Products'
+                        type='text'
+                        name='search'
+                        id='search'
+                      />
+                      <div className='absolute right-0 flex gap-2'>
+                        {searchText !== "" && (
+                          <button
+                            title='Clear Search Field'
+                            onClick={clearSearchText}
+                            className='text-2xl hover:text-ezyBazaar-primary transition-all duration-500 z-10'
+                            type='button'>
+                            <MdClear />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </form>
+                </>
+              )}
+            </div>
             <div>
               {user && (
                 <>
                   <div className='flex flex-row items-center gap-3'>
-                    <div className='border-r-2 pr-6'>
+                    <div className='border-r-2 pr-6 hidden lg:block'>
                       <span>
                         <IoNotificationsOutline className='text-2xl w-12 h-12 border rounded-full p-2 dark:text-white' />
                       </span>
+                    </div>
+                    <div
+                      onClick={() => setShowSearchField(!showSearchField)}
+                      className='font-medium border-2 p-2 border-gray-200 rounded-full'>
+                      <FaSearch className='text-2xl' />
                     </div>
                     <div>
                       <div className='flex items-center text-[#F15E4A] gap-4 font-semibold'>

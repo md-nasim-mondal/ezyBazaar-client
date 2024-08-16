@@ -33,6 +33,7 @@ const AuthProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(2);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showSearchField, setShowSearchField] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -162,6 +163,8 @@ const AuthProvider = ({ children }) => {
     setItemsPerPage,
     currentPage,
     setCurrentPage,
+    setShowSearchField,
+    showSearchField,
   };
 
   return (

@@ -42,12 +42,12 @@ const FilterInput = () => {
           <select
             id='brand'
             name='brand'
-            value={selectedBrand || ""}
+            value={selectedBrand}
             onChange={(e) => {
               setSelectedBrand(e.target.value);
               setCurrentPage(1);
             }}
-            className='redesign px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0'>
+            className='redesign px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0 dark:bg-gray-600'>
             <option value=''>All Brands</option>
             {brands.map((brand) => (
               <option key={brand} value={brand}>
@@ -67,7 +67,7 @@ const FilterInput = () => {
               setSelectedCategory(e.target.value);
               setCurrentPage(1);
             }}
-            className='redesign px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0'>
+            className='redesign px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0 dark:bg-gray-600'>
             <option value=''>All Categories</option>
             {categories.map((category) => (
               <option key={category} value={category}>
@@ -104,7 +104,7 @@ const FilterInput = () => {
               setSortBy(e.target.value);
               setCurrentPage(1);
             }}
-            className='px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0'>
+            className='px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0 dark:bg-gray-600'>
             <option value=''>Sort Products</option>
             <option value='date_desc'>Newest First</option>
             <option value='date_asc'>Oldest First</option>
@@ -112,7 +112,6 @@ const FilterInput = () => {
             <option value='price_desc'>Price: High to Low</option>
           </select>
         </div>
-
       </div>
     </div>
   );

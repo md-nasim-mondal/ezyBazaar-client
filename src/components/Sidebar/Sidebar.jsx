@@ -1,7 +1,7 @@
 import { IoSettingsOutline } from "react-icons/io5";
 import useAuth from "../../hooks/useAuth";
-import MenuItem from "../MenuItem";
 import FilterInput from "../FilterInput";
+import MenuItem from "../MenuItem";
 const Sidebar = () => {
   const { showSidebar } = useAuth();
   return (
@@ -11,7 +11,7 @@ const Sidebar = () => {
         className={`z-10 hidden md:flex flex-col justify-between overflow-x-hidden w-64
            space-y-6 px-2 py-4 ${
              !showSidebar && "hidden"
-           }  transition duration-200 ease-in-out border-r dark:border-gray-100 bg-white dark:bg-gray-600  min-h-screen`}>
+           }  transition duration-200 ease-in-out border-r dark:border-gray-100 bg-white dark:bg-gray-600  min-h-screen dark:text-white`}>
         <div>
           <div>
             <div className='w-full hidden md:flex px-4 py-2  rounded-lg justify-center items-center mx-auto'>
@@ -26,11 +26,7 @@ const Sidebar = () => {
 
         <hr />
         <div>
-          <MenuItem
-            label={"Reset All Filter"}
-            address={""}
-            icon={IoSettingsOutline}
-          />
+          <MenuItem icon={IoSettingsOutline} label={"settings"} address={"#"} />
         </div>
       </div>
     </>

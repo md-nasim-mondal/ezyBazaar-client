@@ -63,7 +63,7 @@ const Products = () => {
 
   return (
     <section>
-      <div className='flex justify-center items-center font-semibold mt-8 lg:mt-16'>
+      <div className='flex justify-center items-center font-semibold'>
         <select
           className='border px-2 py-1 text-sm focus:text-ezyBazaar-primary outline-ezyBazaar-primary border-ezyBazaar-primary text-ezyBazaar-primary bg-transparent focus:border-2 mx-auto mb-12'
           value={itemsPerPage}

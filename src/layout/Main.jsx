@@ -9,9 +9,9 @@ const Main = () => {
       <div className='min-h-screen hidden md:block'>
         <Sidebar></Sidebar>
       </div>
-      <div className='flex-1'>
+      <div className='flex-1 max-h-screen overflow-y-scroll'>
         <Navbar />
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-7xl mx-auto pt-24'>
           <Outlet />
         </div>
         <Footer />
