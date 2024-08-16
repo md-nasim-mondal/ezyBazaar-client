@@ -7,8 +7,8 @@ import ThemeToggle from "./ThemeToggle/ThemeToggle";
 import Drawer from "./Drawer/Drawer";
 
 const Navbar = () => {
-  const { user, logOut, smallDevice } = useAuth();
-
+    const { logOut, smallDevice } = useAuth();
+    const user = true;
   if (smallDevice) {
     return (
       <div className='w-full bg-white dark:bg-gray-600 z-10 shadow-sm'>
