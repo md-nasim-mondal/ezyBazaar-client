@@ -1,15 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
 import useAxiosCommon from "../hooks/useAxiosCommon";
-import { FaSearch } from "react-icons/fa";
-import { MdClear } from "react-icons/md";
-import toast from "react-hot-toast";
-import { useRef } from "react";
-
 const FilterInput = () => {
   const {
-    searchText,
-    setSearchText,
     selectedBrand,
     setSelectedBrand,
     selectedCategory,
@@ -23,7 +16,6 @@ const FilterInput = () => {
     setCurrentPage,
   } = useAuth();
 
-  const inputRef = useRef(null);
   const axiosCommon = useAxiosCommon();
 
   const { data: categories = [] } = useQuery({
@@ -41,23 +33,6 @@ const FilterInput = () => {
       return res.data?.brands;
     },
   });
-
-  const handleSearchProduct = (e) => {
-    e.preventDefault();
-    if (searchText.trim() === "") {
-      return toast.error("Cannot Perform Empty Search!");
-    }
-    setSearchText(searchText.trim());
-    setCurrentPage(1);
-  };
-
-  // Clear Search Text after a search
-  const clearSearchText = () => {
-    setSearchText("");
-    if (inputRef.current) inputRef.current.value = "";
-    setCurrentPage(1);
-  };
-
   return (
     <div>
       {/* Filter & Search Options */}
@@ -138,37 +113,6 @@ const FilterInput = () => {
           </select>
         </div>
 
-        {/* Search Products */}
-        <form
-          onSubmit={handleSearchProduct}
-          className='sm:col-span-2 lg:col-span-2 xl:col-span-1 flex gap-2 items-center justify-start text-ezyBazaar-secondary'>
-          <div className='flex gap-2 w-full items-center relative pl-2 pr-6 bg-transparent rounded-lg border border-ezyBazaar-secondary'>
-            <label className='font-medium' htmlFor='search'>
-              <FaSearch />
-            </label>
-            <input
-              ref={inputRef}
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              className='px-2 rounded-r-lg py-2 bg-transparent w-full border-l border-ezyBazaar-secondary focus:outline-0'
-              placeholder='Search Products'
-              type='text'
-              name='search'
-              id='search'
-            />
-            <div className='absolute right-0 flex gap-2'>
-              {searchText !== "" && (
-                <button
-                  title='Clear Search Field'
-                  onClick={clearSearchText}
-                  className='text-2xl hover:text-ezyBazaar-primary transition-all duration-500 z-10'
-                  type='button'>
-                  <MdClear />
-                </button>
-              )}
-            </div>
-          </div>
-        </form>
       </div>
     </div>
   );

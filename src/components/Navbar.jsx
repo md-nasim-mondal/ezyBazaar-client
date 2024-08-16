@@ -4,10 +4,32 @@ import useAuth from "../hooks/useAuth";
 import UserMenuDropdown from "./DropDown/UserDropDown";
 import ThemeToggle from "./ThemeToggle/ThemeToggle";
 import Drawer from "./Drawer/Drawer";
+import toast from "react-hot-toast";
+import { useRef } from "react";
+import { FaSearch } from "react-icons/fa";
+import { MdClear } from "react-icons/md";
 
 const Navbar = () => {
-  const { smallDevice } = useAuth();
+  const { searchText, setSearchText, setCurrentPage, smallDevice } = useAuth();
   const user = true;
+
+  const inputRef = useRef(null);
+  const handleSearchProduct = (e) => {
+    e.preventDefault();
+    if (searchText.trim() === "") {
+      return toast.error("Cannot Perform Empty Search!");
+    }
+    setSearchText(searchText.trim());
+    setCurrentPage(1);
+  };
+
+  // Clear Search Text after a search
+  const clearSearchText = () => {
+    setSearchText("");
+    if (inputRef.current) inputRef.current.value = "";
+    setCurrentPage(1);
+  };
+
   if (smallDevice) {
     return (
       <div className='w-full bg-white dark:bg-gray-600 z-10 shadow-sm'>
@@ -59,6 +81,39 @@ const Navbar = () => {
               </h1>
             </div>
             <div>
+              {/* Search Products */}
+              <form
+                onSubmit={handleSearchProduct}
+                className='sm:col-span-2 lg:col-span-2 xl:col-span-1 flex gap-2 items-center justify-start text-ezyBazaar-secondary'>
+                <div className='flex gap-2 w-full items-center relative pl-2 pr-6 bg-transparent rounded-lg border border-ezyBazaar-secondary'>
+                  <label className='font-medium' htmlFor='search'>
+                    <FaSearch />
+                  </label>
+                  <input
+                    ref={inputRef}
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    className='px-2 rounded-r-lg py-2 bg-transparent w-full border-l border-ezyBazaar-secondary focus:outline-0'
+                    placeholder='Search Products'
+                    type='text'
+                    name='search'
+                    id='search'
+                  />
+                  <div className='absolute right-0 flex gap-2'>
+                    {searchText !== "" && (
+                      <button
+                        title='Clear Search Field'
+                        onClick={clearSearchText}
+                        className='text-2xl hover:text-ezyBazaar-primary transition-all duration-500 z-10'
+                        type='button'>
+                        <MdClear />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div>
               {user && (
                 <>
                   <div className='flex flex-row items-center gap-3'>
@@ -69,7 +124,6 @@ const Navbar = () => {
                     </div>
                     <div>
                       <div className='flex items-center text-[#F15E4A] gap-4 font-semibold'>
-
                         {/* User Menu Drop Down */}
                         <div>{user && <UserMenuDropdown />}</div>
                         <span className='text-[#152A16]'>
