@@ -19,7 +19,6 @@ const ProductCard = ({ product }) => {
         <span className='font-bold'>
           <TbCurrencyTaka />
         </span>
-        <span>(bdt)</span>
       </p>
       <p className='md:text-lg lg:text-xl text-center'>Category: {category}</p>
       <p className='md:text-lg lg:text-xl text-center'>Brand: {brand}</p>
