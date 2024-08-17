@@ -7,7 +7,7 @@ const Footer = () => {
           <Link
             to='/home'
             className='flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse'>
-            <h1 className='my-5 text-[40px] font-medium text-[#4285F3] text-center'>
+            <h1 className='my-5 text-2xl lg:text-[40px] font-medium text-[#4285F3] text-center'>
               EzyBazaar
             </h1>
           </Link>

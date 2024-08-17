@@ -70,10 +70,14 @@ const Login = () => {
     return <p className='text-center my-24 dark:text-white'>Loading...</p>;
 
   return (
-    <div className='flex justify-center items-center min-h-screen xl:gap-24 gap-16 lg:gap-20 bg-white p-8'>
-      <div className='flex flex-col max-w-lg p-6 rounded-lg border-2'>
+    <div className='flex justify-center items-center min-h-screen xl:gap-24 gap-16 lg:gap-20 bg-white'>
+      <div className='flex flex-col max-w-lg p-4 md:p-6 rounded-lg border-2'>
         <div className='mb-8 text-start'>
-          <h1 className='my-3 text-4xl font-medium text-[#4285F3]'>LOGO</h1>
+              <Link to={"/home"}>
+                <h1 className='text-[40px] font-medium text-[#4285F3] text-center'>
+                  EzyBazaar
+                </h1>
+              </Link>
           <h1 className='my-3 text-3xl font-bold'>Log In To Your Account</h1>
           <p className='text-[#5C635A]'>
             Welcome Back! Select a method to log in:

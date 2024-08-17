@@ -14,7 +14,7 @@ const UserMenuDropdown = () => {
       {/* UserMenuDropdown toggle button */}
       <button
         onClick={() => setUserDropDownOpen(!userDropDownOpen)}
-        className='relative z-10 flex items-center p-x-2 text-sm text-gray-600 bg-white border border-transparent rounded-t-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 dark:text-white dark:bg-gray-600 focus:outline-none'>
+        className='relative z-10 flex items-center p-x-2 text-sm text-gray-600 bg-[#F2F2F2] border border-transparent rounded-t-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 dark:text-white dark:bg-[#191E24] focus:outline-none'>
         <span>
           <a
             href='#'
@@ -49,7 +49,7 @@ const UserMenuDropdown = () => {
       {userDropDownOpen && (
         <div
           onClick={() => setUserDropDownOpen(false)}
-          className='absolute right-0 z-20 w-full  min-w-40 py-2 overflow-hidden origin-top-right bg-white rounded-b-md shadow-xl dark:bg-gray-600'>
+          className='absolute right-0 z-20 w-full  min-w-40 py-2 overflow-hidden origin-top-right bg-[#F2F2F2] rounded-b-md shadow-xl dark:bg-[#191E24]'>
           <a
             href='#'
             className='flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white'>

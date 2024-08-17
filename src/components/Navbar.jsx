@@ -44,10 +44,10 @@ const Navbar = () => {
         <div className='py-4 border-b-[1px]'>
           <Container>
             <div className='flex flex-row  items-center justify-between gap-3 md:gap-0 relative'>
-              <Link to={'/home'}>
-              <h1 className='my-5 text-[40px] font-medium text-[#4285F3] text-center'>
-                EzyBazaar
-              </h1>
+              <Link to={"/home"}>
+                <h1 className='my-5 text-2xl font-medium text-[#4285F3] text-center'>
+                  EzyBazaar
+                </h1>
               </Link>
               <div
                 className=' absolute right-[10%] -bottom-[100%] md:hidden dark:bg-gray-600
@@ -123,9 +123,11 @@ const Navbar = () => {
         <Container>
           <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
             <div>
-              <h1 className='text-[40px] font-medium text-[#4285F3] text-center'>
-                EzyBazaar
-              </h1>
+              <Link to={"/home"}>
+                <h1 className='lg:text-[40px] text-2xl font-medium text-[#4285F3] text-center'>
+                  EzyBazaar
+                </h1>
+              </Link>
             </div>
             <div>
               {/* Search Products */}

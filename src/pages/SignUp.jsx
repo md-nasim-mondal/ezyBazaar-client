@@ -74,10 +74,14 @@ const SignUp = () => {
     return <p className='text-center my-24 dark:text-white'>Loading...</p>;
 
   return (
-    <div className='flex flex-col lg:flex-row justify-center items-center min-h-screen mx-auto xl:gap-24 bg-white p-8'>
-      <div className='flex flex-col max-w-lg p-6 border-2 rounded-xl '>
+    <div className='flex flex-col lg:flex-row justify-center items-center min-h-screen mx-auto xl:gap-24 bg-white'>
+      <div className='flex flex-col max-w-lg p-4 md:p-6 border-2 rounded-xl '>
         <div className='mb-4 text-start'>
-          <h1 className='my-3 text-4xl font-medium text-[#4285F3]'>LOGO</h1>
+              <Link to={"/home"}>
+                <h1 className='text-[40px] font-medium text-[#4285F3] text-center'>
+                  EzyBazaar
+                </h1>
+              </Link>
           <h1 className='my-3 text-3xl font-bold'>Sign Up To Your Account</h1>
           <p className='text-lg'>
             Welcome Back! By click the sign up button, you&apos;re agree to
