@@ -40,7 +40,7 @@ const Navbar = () => {
 
   if (smallDevice) {
     return (
-      <div className='w-full bg-white dark:bg-gray-600 z-10 shadow-sm'>
+      <div className='w-full bg-[#F2F2F2] dark:bg-[#191E24] z-10 shadow-sm'>
         <div className='py-4 border-b-[1px]'>
           <Container>
             <div className='flex flex-row  items-center justify-between gap-3 md:gap-0 relative'>
@@ -118,7 +118,7 @@ const Navbar = () => {
     );
   }
   return (
-    <div className='w-full bg-white dark:bg-gray-600 z-10 shadow-sm'>
+    <div className='w-full bg-[#F2F2F2] dark:bg-[#191E24] z-10 shadow-sm'>
       <div className='py-4 border-b-[1px] relative'>
         <Container>
           <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>

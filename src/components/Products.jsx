@@ -64,7 +64,7 @@ const Products = () => {
   };
 
   return (
-    <section className=' dark:bg-gray-600 py-24 w-full rounded-2xl min-h-[70vh]'>
+    <section className='  py-24 w-full rounded-2xl min-h-[70vh]'>
       {/* Show Product Cards */}
       <div className=''>
         {isProductsLoading ? (

@@ -11,7 +11,7 @@ const Sidebar = () => {
         className={`z-10 hidden md:flex flex-col justify-between overflow-x-hidden w-64
            space-y-6 px-2 py-4 ${
              !showSidebar && "hidden"
-           }  transition duration-200 ease-in-out border-r dark:border-gray-100 bg-white dark:bg-gray-600  min-h-screen dark:text-white`}>
+           }  transition duration-200 ease-in-out border-r bg-[#F2F2F2] dark:border-gray-100 dark:bg-[#191E24]  min-h-screen dark:text-white`}>
         <div>
           <div>
             <div className='w-full hidden md:flex px-4 py-2  rounded-lg justify-center items-center mx-auto'>
