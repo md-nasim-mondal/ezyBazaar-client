@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const {
@@ -43,9 +44,11 @@ const Navbar = () => {
         <div className='py-4 border-b-[1px]'>
           <Container>
             <div className='flex flex-row  items-center justify-between gap-3 md:gap-0 relative'>
+              <Link to={'/home'}>
               <h1 className='my-5 text-[40px] font-medium text-[#4285F3] text-center'>
-                LOGO
+                EzyBazaar
               </h1>
+              </Link>
               <div
                 className=' absolute right-[10%] -bottom-[100%] md:hidden dark:bg-gray-600
                p-4 rounded-lg'>
@@ -121,7 +124,7 @@ const Navbar = () => {
           <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
             <div>
               <h1 className='text-[40px] font-medium text-[#4285F3] text-center'>
-                LOGO
+                EzyBazaar
               </h1>
             </div>
             <div>

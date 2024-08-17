@@ -96,7 +96,7 @@ const Products = () => {
               selectedBrand ||
               selectedCategory) &&
               productCount > 0 && (
-                <div className='flex items-center justify-center'>
+                <div className='flex items-center justify-center text-green-600'>
                   {`${productCount} ${
                     productCount > 1 ? "Matches" : "Match"
                   } Found!`}

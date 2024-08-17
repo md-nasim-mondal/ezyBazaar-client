@@ -5,15 +5,11 @@ const Footer = () => {
       <div className='w-full mx-auto p-4 md:py-8'>
         <div className='sm:flex sm:items-center sm:justify-between max-w-screen-xl mx-auto'>
           <Link
-            to='/'
+            to='/home'
             className='flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse'>
-            {/* <img
-              src={logo}
-              className='h-8 md:h-10 lg:h-12'
-              alt='petLoversHub Logo '
-            /> */}
-
-            logo
+            <h1 className='my-5 text-[40px] font-medium text-[#4285F3] text-center'>
+              EzyBazaar
+            </h1>
           </Link>
           <ul className='flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400'>
             <li>
