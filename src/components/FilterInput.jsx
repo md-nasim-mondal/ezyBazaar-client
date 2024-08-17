@@ -50,7 +50,7 @@ const FilterInput = () => {
             className='redesign px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0 dark:bg-gray-600'>
             <option value=''>All Brands</option>
             {brands.map((brand) => (
-              <option key={brand} value={brand}>
+              <option className="capitalize" key={brand} value={brand}>
                 {brand}
               </option>
             ))}
@@ -70,7 +70,7 @@ const FilterInput = () => {
             className='redesign px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0 dark:bg-gray-600'>
             <option value=''>All Categories</option>
             {categories.map((category) => (
-              <option key={category} value={category}>
+              <option className='capitalize' key={category} value={category}>
                 {category}
               </option>
             ))}
