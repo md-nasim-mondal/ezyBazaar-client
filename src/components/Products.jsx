@@ -16,6 +16,8 @@ const Products = () => {
     setCurrentPage,
   } = useAuth();
 
+  console.log(parseInt);
+
   // Get products data using hook
   const { productCount, totalPages, products, isProductsLoading } =
     useGetProducts(
@@ -62,28 +64,32 @@ const Products = () => {
   };
 
   return (
-    <section className=" dark:bg-gray-600 py-24 w-full rounded-2xl">
-      <div className='flex justify-center items-center font-semibold'>
-        <select
-          className='border px-2 py-1 text-sm focus:text-ezyBazaar-primary outline-ezyBazaar-primary border-ezyBazaar-primary text-ezyBazaar-primary bg-transparent focus:border-2 mx-auto mb-12 dark:bg-gray-600'
-          value={itemsPerPage}
-          onChange={handleItemsPerPage}
-          name='products'
-          id='products'>
-          <option value='2'>Show Products Per Page: 2</option>
-          <option value='4'>Show Products Per Page: 4</option>
-          <option value='6'>Show Products Per Page: 6</option>
-          <option value='12'>Show Products Per Page: 12</option>
-        </select>
-      </div>
+    <section className=' dark:bg-gray-600 py-24 w-full rounded-2xl min-h-[70vh]'>
       {/* Show Product Cards */}
       <div className=''>
         {isProductsLoading ? (
-          "Loading..."
+          <p className='text-center dark:text-white text-3xl'>Loading...</p>
         ) : products?.length === 0 ? (
-          "No products found."
+          <p className='text-center dark:text-white text-3xl'>
+            No products found.
+          </p>
         ) : (
           <>
+            {totalPages > 0 && (
+              <div className='flex justify-center items-center font-semibold'>
+                <select
+                  className='border px-2 py-1 text-sm focus:text-ezyBazaar-primary outline-ezyBazaar-primary border-ezyBazaar-primary text-ezyBazaar-primary bg-transparent focus:border-2 mx-auto mb-12 dark:bg-gray-600'
+                  value={itemsPerPage}
+                  onChange={handleItemsPerPage}
+                  name='products'
+                  id='products'>
+                  <option value='2'>Show Products Per Page: 2</option>
+                  <option value='4'>Show Products Per Page: 4</option>
+                  <option value='6'>Show Products Per Page: 6</option>
+                  <option value='12'>Show Products Per Page: 12</option>
+                </select>
+              </div>
+            )}
             {(searchText.trim() ||
               minPrice ||
               maxPrice ||

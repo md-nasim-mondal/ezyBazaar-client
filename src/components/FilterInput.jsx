@@ -27,7 +27,7 @@ const FilterInput = () => {
   });
 
   const { data: brands = [] } = useQuery({
-    queryKey: ["brands"],
+    queryKey: ["brands", selectedBrand],
     queryFn: async () => {
       const res = await axiosCommon("/products/brands");
       return res.data?.brands;
@@ -62,7 +62,7 @@ const FilterInput = () => {
           <select
             id='category'
             name='category'
-            value={selectedCategory || ""}
+            value={selectedCategory}
             onChange={(e) => {
               setSelectedCategory(e.target.value);
               setCurrentPage(1);
@@ -82,14 +82,14 @@ const FilterInput = () => {
           <input
             type='number'
             value={minPrice || ""}
-            onChange={(e) => setMinPrice(Number(e.target.value) || "")}
+            onChange={(e) => setMinPrice(e.target.value)}
             placeholder='Minimum Price'
             className='px-2 rounded-r-lg py-2 bg-transparent w-full border-ezyBazaar-secondary focus:outline-0'
           />
           <input
             type='number'
             value={maxPrice || ""}
-            onChange={(e) => setMaxPrice(Number(e.target.value) || "")}
+            onChange={(e) => setMaxPrice(e.target.value)}
             placeholder='Maximum Price'
             className='px-2 rounded-r-lg py-2 bg-transparent w-full border-l border-ezyBazaar-secondary focus:outline-0'
           />

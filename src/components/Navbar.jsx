@@ -47,7 +47,7 @@ const Navbar = () => {
                 LOGO
               </h1>
               <div
-                className=' absolute right-[35%] -bottom-[100%] md:hidden dark:bg-gray-600
+                className=' absolute right-[10%] -bottom-[100%] md:hidden dark:bg-gray-600
                p-4 rounded-lg'>
                 {showSearchField && (
                   <>
