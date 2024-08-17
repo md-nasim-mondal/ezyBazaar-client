@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "ezyBazaar-primary": "#6897bb",
+        "ezyBazaar-primary": "#4285F3",
         "ezyBazaar-secondary": "#31404b",
       },
     },

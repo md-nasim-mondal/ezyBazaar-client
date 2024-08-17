@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
       <div className='size-36 md:size-48 lg:size-60 cursor-pointer hover:scale-105 mx-auto'>
         <img src={image} alt={name} className="rounded-xl" />
       </div>
-      <h3 className='md:text-lg lg:text-xl font-semibold text-red-600 text-center'>
+      <h3 className='md:text-lg lg:text-xl font-semibold text-green-600 text-center'>
         {name}
       </h3>
       <p className='md:text-lg lg:text-xl font-medium flex items-center justify-center'>
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
         {moment(product?.creation_time).format("MMMM DD, YYYY")}
       </p>
       <div className='flex gap-2 justify-center mt-2 w-full'>
-        <button className='flex items-center gap-1 px-4 py-2 text-sm text-white bg-red-500 rounded-lg transition duration-300 ease-in-out hover:bg-red-600'>
+        <button className='flex items-center gap-1 px-4 py-2 text-sm text-white bg-green-500 rounded-lg transition duration-300 ease-in-out hover:bg-green-600'>
           <TiShoppingCart />
           Add to Cart
         </button>
