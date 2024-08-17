@@ -83,10 +83,10 @@ const Products = () => {
                   onChange={handleItemsPerPage}
                   name='products'
                   id='products'>
-                  <option value='2'>Show Products Per Page: 2</option>
-                  <option value='4'>Show Products Per Page: 4</option>
                   <option value='6'>Show Products Per Page: 6</option>
                   <option value='12'>Show Products Per Page: 12</option>
+                  <option value='18'>Show Products Per Page: 18</option>
+                  <option value='24'>Show Products Per Page: 24</option>
                 </select>
               </div>
             )}
@@ -103,9 +103,7 @@ const Products = () => {
                 </div>
               )}
             <div
-              className={`grid md:grid-cols-2 ${
-                itemsPerPage >= 3 && "lg:grid-cols-3"
-              } gap-6 justify-center items-center px-4`}>
+              className={`grid grid-cols-1 lg:grid-cols-3 gap-6 justify-center items-center px-4`}>
               {products?.map((product) => (
                 <ProductCard key={product?._id} product={product} />
               ))}
