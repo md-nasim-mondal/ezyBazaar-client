@@ -9,7 +9,7 @@ const SocialLogin = ({ isLoading, handleGoogleSignIn }) => {
         onClick={handleGoogleSignIn}
         className='flex justify-center text-base min-w-[178px] w-full h-[55px] items-center space-x-2 disabled:cursor-not-allowed cursor-pointer rounded-lg shadow-lg bg-gradient-to-r from-[#E4E4E4] to-[#FFFFFF]'>
         <FcGoogle size={32} />
-        <p>Google</p>
+        <p>Continue With Google</p>
       </button>
     </div>
   );
