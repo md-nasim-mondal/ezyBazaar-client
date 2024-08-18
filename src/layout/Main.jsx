@@ -31,7 +31,7 @@ const Main = () => {
         <div
           onClick={() => setUserDropDownOpen(false)}
           className='md:max-w-full p-6
-         mx-auto  dark:text-white w-full'>
+         mx-auto  dark:text-white w-full bg-gray-200 dark:bg-gray-900'>
           <Outlet />
         </div>
         {showComponents && user && <Footer />}
