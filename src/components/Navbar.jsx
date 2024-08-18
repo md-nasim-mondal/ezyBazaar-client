@@ -41,7 +41,7 @@ const Navbar = () => {
   if (smallDevice) {
     return (
       <div className='w-full bg-[#F2F2F2] dark:bg-[#191E24] z-10 shadow-sm'>
-        <div className='py-4 border-b dark:border-[#191E24]'>
+        <div className='py-1 border-b dark:border-[#191E24]'>
           <Container>
             <div className='flex flex-row  items-center justify-between gap-3 md:gap-0 relative'>
               <Link to={"/home"}>
@@ -49,11 +49,13 @@ const Navbar = () => {
                   EzyBazaar
                 </h1>
               </Link>
-              <div
-                className=' absolute right-[10%] -bottom-[100%] md:hidden dark:bg-gray-600
-               p-4 rounded-lg'>
-                {showSearchField && (
-                  <>
+
+              {showSearchField && (
+                <>
+                  {" "}
+                  <div
+                    className=' absolute right-[10%] -bottom-[100%] md:hidden dark:bg-[#191E24]
+                 p-4 rounded-lg'>
                     {/* Search Products */}
                     <form
                       onSubmit={handleSearchProduct}
@@ -85,9 +87,9 @@ const Navbar = () => {
                         </div>
                       </div>
                     </form>
-                  </>
-                )}
-              </div>
+                  </div>
+                </>
+              )}
               <div>
                 {user && (
                   <>

@@ -70,7 +70,7 @@ const Login = () => {
     return <p className='text-center my-24 dark:text-white'>Loading...</p>;
 
   return (
-    <div className='flex justify-center items-center min-h-screen xl:gap-24 gap-16 lg:gap-20 bg-white'>
+    <div className='flex justify-center items-center min-h-screen xl:gap-24 gap-16 lg:gap-20 bg-white p-4'>
       <div className='flex flex-col max-w-lg p-4 md:p-6 rounded-lg border-2'>
         <div className='mb-8 text-start'>
               <Link to={"/home"}>

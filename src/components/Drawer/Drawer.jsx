@@ -1,7 +1,7 @@
 import { AiOutlineAppstore, AiOutlineBars } from "react-icons/ai";
 import MenuItem from "../MenuItem";
 import { CiHeart, CiLogin } from "react-icons/ci";
-import {  IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineHelpCenter } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
@@ -39,7 +39,7 @@ const Drawer = () => {
       {/* Drawer component */}
       <div
         id='drawer-right-example'
-        className={`fixed top-0 right-0 z-50  min-h-[50vh] overflow-y-auto transition-transform transform bg-white w-80 dark:bg-gray-800 ${
+        className={`fixed top-0 right-0 z-50  min-h-[50vh] overflow-y-auto overflow-x-hidden max-h-screen transition-transform transform bg-white w-80 dark:bg-gray-800 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         tabIndex='-1'
@@ -62,7 +62,9 @@ const Drawer = () => {
               <h4 className='text-white font-semibold leading-9 text-2xl my-1'>
                 {user?.displayName}
               </h4>
-              <p className='text-lg text-[#152A16]'>{user?.email}</p>
+              <p className='text-lg text-[#152A16] dark:text-white'>
+                {user?.email}
+              </p>
             </div>
           </div>
           {/* Nav Items */}
@@ -76,11 +78,7 @@ const Drawer = () => {
             <hr className='text-2xl font-bold text-gray-300 ' />
             {/*  Menu Items */}
             <div className='space-y-5 p-4 pl-0'>
-              <MenuItem
-                label={"Home"}
-                address={"/"}
-                icon={AiOutlineAppstore}
-              />
+              <MenuItem label={"Home"} address={"/"} icon={AiOutlineAppstore} />
               <MenuItem
                 label={"View Profile"}
                 address={"/profile"}

@@ -30,8 +30,8 @@ const Main = () => {
         {showComponents && user && <Navbar />}
         <div
           onClick={() => setUserDropDownOpen(false)}
-          className='md:max-w-full p-6
-         mx-auto  dark:text-white w-full bg-gray-200 dark:bg-gray-900'>
+          className={`md:max-w-full ${user && showComponents && 'p-6 bg-gray-200 dark:bg-gray-900'}
+         mx-auto  dark:text-white w-full`}>
           <Outlet />
         </div>
         {showComponents && user && <Footer />}

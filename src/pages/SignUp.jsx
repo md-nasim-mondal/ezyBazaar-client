@@ -74,7 +74,7 @@ const SignUp = () => {
     return <p className='text-center my-24 dark:text-white'>Loading...</p>;
 
   return (
-    <div className='flex flex-col lg:flex-row justify-center items-center min-h-screen mx-auto xl:gap-24 bg-white'>
+    <div className='flex flex-col lg:flex-row justify-center items-center min-h-screen mx-auto xl:gap-24 bg-white p-4'>
       <div className='flex flex-col max-w-lg p-4 md:p-6 border-2 rounded-xl '>
         <div className='mb-4 text-start'>
               <Link to={"/home"}>

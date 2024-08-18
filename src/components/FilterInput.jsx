@@ -34,7 +34,7 @@ const FilterInput = () => {
     },
   });
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {/* Filter & Search Options */}
       <div className='w-full flex flex-col gap-8'>
         {/* Filter by Brand */}
